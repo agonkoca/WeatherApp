@@ -2,10 +2,11 @@
 
 Welcome to the **Weather App**! This project showcases a simple and efficient weather application built using Java and Android Studio.
 
-## Features
-- Fetches real-time weather data using HTTP requests.
-- Displays weather information with a clean and intuitive interface.
-- Uses device location to provide localized weather updates.
+## Version Control Guidelines
+
+### Cloning the Repository
+To clone the repository, run the following command in your terminal:
+```git clone https://github.com/yourusername/your-repo.git```
 
 ## Dependencies
 
@@ -30,3 +31,4 @@ The dependencies are added in the `build.gradle` file as:
 implementation libs.picasso
 implementation libs.volley
 implementation libs.play.services.location
+```
