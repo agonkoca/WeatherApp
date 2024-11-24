@@ -81,6 +81,26 @@
             android:textColor="@color/white"
             android:textSize="70dp"/>
 
+        <!-- We have undone thing here -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginBottom="10dp"
+            android:text="Today's Weather Forecast"
+            android:layout_above="@id/idRvWeather"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+    />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idRvWeather"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
 
     </RelativeLayout>
 
