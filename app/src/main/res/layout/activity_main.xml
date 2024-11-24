@@ -8,10 +8,11 @@
     tools:context=".MainActivity">
 
     <ProgressBar
-            andriod:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/idPBLoading"
-            andriod:layout_centerInParent="true"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
     />
 
     <RelativeLayout
