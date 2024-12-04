@@ -91,6 +91,8 @@
 
         <!-- We have undone thing here -->
 
+        <!-- We have to implement the IVCondition in order to intialize in the MainActivity-->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

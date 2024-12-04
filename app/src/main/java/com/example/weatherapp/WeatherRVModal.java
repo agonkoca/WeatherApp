@@ -7,6 +7,7 @@ public class WeatherRVModal {
     private String icon;
     private String windSpeed;
 
+
     public WeatherRVModal(String time, String temperature, String icon, String windSpeed) {
         this.time = time;
         this.temperature = temperature;
