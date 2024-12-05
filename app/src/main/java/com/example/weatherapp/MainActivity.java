@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
     private RelativeLayout homeRL;
     private ProgressBar loadingPB;
-    private TextView cityNameTV, temperatureTV, conditionIV;
+    private TextView cityNameTV, temperatureTV, conditionTV;
     private RecyclerView weatherRV;
     private TextInputEditText cityEdt;
-    private ImageView backIV, iconIV, searchIV;
+    private ImageView backIV, iconIV, searchTV;
     private ArrayList<WeatherRVModal> weatherRVModalArrayList;
     private WeatherRVAdapter weatherRVAdapter;
     private LocationManager locationManager;
@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
         cityNameTV = findViewById(R.id.idTVCityName);
         temperatureTV = findViewById(R.id.idTVTemperature);
 
-        //   conditionIV = findViewById(R.id.idIVCondition);
+        conditionTV = findViewById(R.id.idTVCondition);
         weatherRV = findViewById(R.id.idRvWeather);
         cityEdt = findViewById(R.id.idEdtCity);
         backIV = findViewById(R.id.idTVBack);
-        //iconIV = findViewByID(R.id.idTVIcon);
-        //searchIV = findViewByID(R.id.idIVSearch);
+        iconIV = findViewById(R.id.idTVIcon);
+        searchTV = findViewById(R.id.idTVSearch);
         weatherRVModalArrayList = new ArrayList<>();
         weatherRVAdapter = new WeatherRVAdapter(this,weatherRVModalArrayList);
         weatherRV.setAdapter(weatherRVAdapter);
