@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
     tools:context=".MainActivity">
 
     <ProgressBar
@@ -75,6 +76,17 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ImageView
+                android:id="@+id/idTVSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="0.5"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_search"
+                app:tint="@color/white"/>
+
         </LinearLayout>
 
         <TextView
@@ -89,6 +101,25 @@
             android:textColor="@color/white"
             android:textSize="70dp"/>
 
+        <ImageView
+            android:id="@+id/idTVIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idTVTemperature"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idTVCondition"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="Condition"
+            android:textColor="@color/white"
+            android:layout_below="@+id/idTVIcon"/>
         <!-- We have undone thing here -->
 
         <!-- We have to implement the IVCondition in order to intialize in the MainActivity-->
