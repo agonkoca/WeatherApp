@@ -9,6 +9,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -70,8 +72,34 @@ public class MainActivity extends AppCompatActivity {
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         cityName = getCityName(location.getLongitude(), location.getLatitude());
         getWeatherInfo(cityName);
+
+        searchTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String city = cityEdt.getText().toString();
+                if (city.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please enter city name", Toast.LENGTH_SHORT).show();
+                } else {
+                    cityNameTV.setText(city);
+                    getWeatherInfo(city);
+                }
+            }
+        });
+
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==PERMISSION_CODE) {
+            if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permissions granted..", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Please provide the permissions", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
     private String getCityName(double longitude, double latitude){
         String cityName = "Not found";
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
@@ -98,32 +126,6 @@ public class MainActivity extends AppCompatActivity {
     private void getWeatherInfo(String cityName){
         String url = "http://api.weatherapi.com/v1/forecast.json>key=dca892fc2d53482a1461857211207&q=" +cityName+ "&days=1&aqi=yes&alerts=yes";
 
-    }
-
-    searchIV.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            String city = cityEdt.getText().toString();
-            if (city.isEmpty()) {
-                Toast.makeText(MainActivity.this, "Please enter city name", Toeat.LENGTH_SHORT).show();
-            } else {
-                cityNameTV.setText(cityName);
-                getWeatherInfo(city);
-            }
-        }
-    });
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode==PERMISSION_CODE) {
-            if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permissions granted..", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Please provide the permissions", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }
     }
 }
 
