@@ -99,5 +99,31 @@ public class MainActivity extends AppCompatActivity {
         String url = "http://api.weatherapi.com/v1/forecast.json>key=dca892fc2d53482a1461857211207&q=" +cityName+ "&days=1&aqi=yes&alerts=yes";
 
     }
+
+    searchIV.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String city = cityEdt.getText().toString();
+            if (city.isEmpty()) {
+                Toast.makeText(MainActivity.this, "Please enter city name", Toeat.LENGTH_SHORT).show();
+            } else {
+                cityNameTV.setText(cityName);
+                getWeatherInfo(city);
+            }
+        }
+    });
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==PERMISSION_CODE) {
+            if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permissions granted..", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Please provide the permissions", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
 }
 
