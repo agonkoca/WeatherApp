@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private int PERMISSION_CODE = 1;
     private String cityName;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    private String getCityName(double longitude, double latitude){
+    String getCityName(double longitude, double latitude){
         String cityName = "Not found";
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
         try {
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
     }
+
 
 
 }
