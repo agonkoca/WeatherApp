@@ -155,26 +155,27 @@ public class MainActivity extends AppCompatActivity {
                     String conditionIcon = response.getJSONObject("current").getJSONObject("condition").getString("icon");
                     Picasso.get().load("https:".concat(conditionIcon)).into(iconIV);
                     conditionTV.setText(condition);
-                    if (isDay ==1){
-                        Picasso.get().load("https://www.peakpx.com/en/hd-wallpaper-desktop-gffef").into(backIV); // It can be wrong
+                    if (isDay == 1){
+                        Picasso.get().load("https://img.freepik.com/free-photo/yellow-dandelions-bly-sky_1398-1763.jpg").into(backIV); // It can be wrong
                     }else {
-                        Picasso.get().load("https://www.peakpx.com/en/hd-wallpaper-desktop-awntk").into(backIV); // It can be wrong
+                        Picasso.get().load("https://w0.peakpx.com/wallpaper/240/121/HD-wallpaper-star-wars-alone-apple-cyberpunk-iphone-mohamed-sholqamee-night-sad-single-star-wars-stars-thumbnail.jpg").into(backIV); // It can be wrong
                     }
 
                     JSONObject forecastObj = response.getJSONObject("forecast");
                     JSONObject forecastO = forecastObj.getJSONArray("forecastday").getJSONObject(0);
                     JSONArray hourArray = forecastO.getJSONArray("hour");
 
-                    for (int i =0; i<hourArray.length(); i++){
+                    for (int i = 0; i < hourArray.length(); i++) {
                         JSONObject hourObj = hourArray.getJSONObject(i);
                         String time = hourObj.getString("time");
                         String temper = hourObj.getString("temp_c");
                         String img = hourObj.getJSONObject("condition").getString("icon");
-                        String  wind = hourObj.getString("wind_kmh");
-                        weatherRVModalArrayList.add(new WeatherRVModal(time,temper,img,wind));
-
+                        String wind = hourObj.getString("wind_kph"); // Ensure key is correct
+                        weatherRVModalArrayList.add(new WeatherRVModal(time, temper, img, wind));
+                        Log.d("WeatherData", "Time: " + time + ", Temp: " + temper + ", Wind: " + wind);
                     }
                     weatherRVAdapter.notifyDataSetChanged();
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
