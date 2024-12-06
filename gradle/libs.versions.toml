@@ -13,6 +13,7 @@ mockitoCore = "4.2.0"
 picasso = "2.8"
 playServicesLocation = "21.3.0"
 volley = "1.2.1"
+espressoContrib = "3.6.1"
 
 [libraries]
 espresso-core-v351 = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
@@ -28,6 +29,7 @@ mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
+espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
