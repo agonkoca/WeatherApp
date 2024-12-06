@@ -30,13 +30,16 @@ android {
 }
 
 dependencies {
-    implementation 'com.squareup.picasso:picasso:2.8'
-    implementation 'com.android.volley:volley:1.2.1'
-    implementation 'com.google.android.gms:play-services-location:21.0.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.activity:activity-ktx:1.7.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation libs.picasso
+    implementation libs.volley
+    implementation libs.play.services.location
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:4.2.0'
