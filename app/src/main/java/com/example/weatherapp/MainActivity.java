@@ -1,6 +1,7 @@
 package com.example.weatherapp;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONObject response) {
                 loadingPB.setVisibility(View.GONE);
@@ -150,14 +152,14 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     String temperature = response.getJSONObject("current").getString("temp_c");
-                    temperatureTV.setText(temperature+"°C");
+                    temperatureTV.setText(temperature +"°C");
                     int isDay = response.getJSONObject("current").getInt("is_day");
                     String condition = response.getJSONObject("current").getJSONObject("condition").getString("text");
                     String conditionIcon = response.getJSONObject("current").getJSONObject("condition").getString("icon");
                     Picasso.get().load("https:".concat(conditionIcon)).into(iconIV);
                     conditionTV.setText(condition);
                     if (isDay == 1){
-                        Picasso.get().load("https://img.freepik.com/free-photo/yellow-dandelions-bly-sky_1398-1763.jpg").into(backIV); // It can be wrong
+                        Picasso.get().load("https://media.istockphoto.com/id/947314334/photo/blue-sky-with-bright-sun.jpg?s=612x612&w=0&k=20&c=XUlLAWDXBLYdTGIl6g_qHQ9IBBw4fBvkVuvL2dmVXQw=").into(backIV); // It can be wrong
                     }else {
                         Picasso.get().load("https://w0.peakpx.com/wallpaper/240/121/HD-wallpaper-star-wars-alone-apple-cyberpunk-iphone-mohamed-sholqamee-night-sad-single-star-wars-stars-thumbnail.jpg").into(backIV); // It can be wrong
                     }
